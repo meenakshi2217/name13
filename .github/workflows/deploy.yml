@@ -4,21 +4,18 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write   # 🔥 IMPORTANT
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: echo "No dependencies needed"
-
-      - name: Build site
-        run: echo "Building static site"
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
